@@ -1,0 +1,63 @@
+README
+TEMA 1 - POO
+
+CRISTIAN PAVEL - 324CB
+
+
+Clasa Main:
+
+	Clasa Main se foloseste de clasele de citire / scriere date, pentru a
+parcurge fisierul de input, a crea obiectele necesare (proces, scheduler si
+cache) si a rula procesele, in functie de selectia facuta de Scheduler. Astfel, 
+creez o instanta de Cache, folosind constructorul din clasa Cache (daca e 
+nevoie), creez o instanta de scheduler, si in scheduler,adaug procesele cores-
+punzatoare. Dupa care, parcurg vectorul de numere, selectez un proces cu 
+scheduler-ul, verific daca e in cache (daca e nevoie), il rulez si afisez re-
+zultatul.
+
+
+Clasa Scheduler:
+
+	Am creat o clasa abstracta de scheduler, pentru a fi extinsa si imple-
+mentata in functie de modul in care doresc sa selectez un proces. Metoda ab-
+stracta getProcess trebuie construita. In interiorul clasei am atribute pen-
+tru procesele din care sa selecteze, pentru numarul de procese si pentru numa-
+rul total de selectii efectuat. Am grupat scheduler-ele fiecare trebuind sa 
+extinda clasa Scheduler, ele indeplinind acelasi task, in moduri diferite. Am
+pus nrSelections aici pentru a fi mai bine structurat codul (chiar daca nu am
+nevoie de el in cazul RandomScheduler, RoundRobinScheduler).
+
+Clasele RandomScheduler, RoundRobinScheduler si WeighteScheduler:
+
+	Extind clasa Scheduler si implementeaza metoda getProcess. Am grupat 
+scheduler-ele fiecare trebuind sa extinda clasa Scheduler, pentru ca ele inde-
+plinesc acelasi task, in moduri diferite.
+
+Clasa Process:
+
+	Clasa abstracta de proces, ce trebuie extinsa si implementata in func-
+tie de tipul de proces dorit. Metoda run trebuie construita. Am creat clasa,
+pentru a avea control mai usor asupra proceselor, putandu-le grupa si rula
+intr-un mod usor de inteles. Am atribute pentru a caracteriza procesele.
+
+Clasele CheckPrime, NextPrime, Fibonacci, Factorial, Sqrt, Cube, Square:
+
+
+	Extind clasa Process, fiecare reprezentand un proces ce poate fi selec-
+tat.
+
+Clasa Cache:
+
+	Clasa este facuta pentru a implementa LruCache si LfuCache. Am o clasa
+interna pentru a retine mai usor elemente din vectorul din cache (in functie
+de proces, nr-ul pe care e rulat procesul si rezultat). Aceasta clasa interna
+trebuie sa fie comparabila (pentru ca voi scoate elemente din ea dupa o anumita
+ordine), deci implementez interfata Comparable cu metoda compareTo. Aceasta
+urmeaza a fi construita in functie de cache (Lfu sau Lru). Daca am Lfu voi fo-
+losi nrUses si daca am Lru voi folosi indexTime (am pus ambele in cod chiar 
+daca la un moment dat voi folosi doar una, pentru lizibilitate). Am metode
+pentru cautare in Cache, adaugare si inlocuire.
+
+
+
+THE END.
